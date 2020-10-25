@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var tile_1 = __importDefault(require("./tile"));
+exports.__esModule = true;
 var HexMap = /** @class */ (function () {
     function HexMap(width, height) {
         this.map = [];
@@ -17,12 +13,12 @@ var HexMap = /** @class */ (function () {
     };
     HexMap.prototype.initMap = function () {
         for (var h = 0; h < this.height; h++) {
-            this.map.push(new tile_1.default());
+            this.map.push("");
             for (var w = 0; w < this.width; w++) {
-                this.map.push(new tile_1.default());
+                this.map.push("");
             }
         }
     };
     return HexMap;
 }());
-exports.default = HexMap;
+exports["default"] = HexMap;

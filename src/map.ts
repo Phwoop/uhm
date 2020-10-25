@@ -1,10 +1,9 @@
-import HexTile from "./tile";
 
 export default class HexMap {
   public width: number;
   public height: number;
 
-  private map : Array<HexTile> = [];
+  private map : Array<string> = [];
 
   constructor(width : number, height : number){
     this.width = width;
@@ -20,9 +19,9 @@ export default class HexMap {
 
   initMap(){
     for(var h = 0; h < this.height; h++){
-      this.map.push(new HexTile())
+      this.map.push("")
       for(var w = 0; w < this.width; w++){
-        this.map.push(new HexTile())
+        this.map.push("")
       }
     }
   }

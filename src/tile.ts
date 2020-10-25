@@ -1,5 +1,8 @@
 export default class HexTile {
-    constructor(){
-        
+
+    private texture;
+
+    constructor(texture){
+        this.texture = texture
     }
 }

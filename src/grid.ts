@@ -1,14 +1,14 @@
-import Honeycomb, {GridFactory, Hex, HexFactory} from 'honeycomb-grid'
+import {defineGrid, extendHex, Grid, GridFactory, Hex, HexFactory} from 'honeycomb-grid'
 import HexMap from './map';
 
-export default class Grid {
+export default class HexGrid {
   private width : number;
   private height: number;
   private map: HexMap;
 
   private hex : HexFactory<{size: number}>;
   private grid: GridFactory<Hex<{size: number}>>;
-  private rect: Honeycomb.Grid;
+  private rect: Grid;
   
   constructor(map : HexMap, res: number){
     this.width = map.width;
@@ -17,10 +17,10 @@ export default class Grid {
     this.map = map;
 
 
-    this.hex = Honeycomb.extendHex({
+    this.hex = extendHex({
       size: res
     })
-    this.grid = Honeycomb.defineGrid(this.hex);
+    this.grid = defineGrid(this.hex);
     this.rect = this.grid.rectangle({width: this.width, height: this.height})
   }
 

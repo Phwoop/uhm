@@ -1,28 +1,25 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var honeycomb_grid_1 = __importDefault(require("honeycomb-grid"));
-var Grid = /** @class */ (function () {
-    function Grid(map, res) {
+exports.__esModule = true;
+var honeycomb_grid_1 = require("honeycomb-grid");
+var HexGrid = /** @class */ (function () {
+    function HexGrid(map, res) {
         this.width = map.width;
         this.height = map.height;
         console.log(this, map);
         this.map = map;
-        this.hex = honeycomb_grid_1.default.extendHex({
+        this.hex = honeycomb_grid_1.extendHex({
             size: res
         });
-        this.grid = honeycomb_grid_1.default.defineGrid(this.hex);
+        this.grid = honeycomb_grid_1.defineGrid(this.hex);
         this.rect = this.grid.rectangle({ width: this.width, height: this.height });
     }
-    Grid.prototype.drawAll = function (cb) {
+    HexGrid.prototype.drawAll = function (cb) {
         var all = this.rect.map(function (hex) {
             return hex.toPoint();
         });
         cb(this.hex().corners(), all);
     };
-    Grid.prototype.draw = function (cb) {
+    HexGrid.prototype.draw = function (cb) {
         var _this = this;
         var counter = 0;
         this.rect.forEach(function (hex) {
@@ -34,6 +31,6 @@ var Grid = /** @class */ (function () {
             counter++;
         });
     };
-    return Grid;
+    return HexGrid;
 }());
-exports.default = Grid;
+exports["default"] = HexGrid;
